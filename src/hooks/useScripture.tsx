@@ -287,7 +287,14 @@ export function useScripture({ // hook for fetching scripture
         fetchCount: _fetchCount,
         fetched: false,
         ignoreSha,
-        resourceState: { loadingResource: true },
+        resourceState: {
+          loadingResource: true,
+          // reset states before fetch
+          contentNotFoundError: false,
+          scriptureNotLoadedError: false,
+          manifestNotFoundError: false,
+          invalidManifestError: false,
+        },
       })
 
       const response = await fetchBibleBookCore(fetchParams)
